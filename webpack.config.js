@@ -3,14 +3,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const webpack = require('webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
   resolve: {
+    extensions: ['.json', '.js', '.wasm'],
     fallback: {
-      fs: false,
-      child_process: false,
+      fs: require.resolve('fs'),
     },
   },
   entry: './src/index.js',
@@ -26,6 +27,10 @@ const config = {
       template: 'index.html',
     }),
     new NodePolyfillPlugin(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
+    }),
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import fs from 'fs';
+// import fs from 'fs';
 import path from 'path';
 
 const buildFullPath = (filepath) => path.resolve(process.cwd(), filepath);
@@ -54,16 +54,17 @@ const app = () => {
         }],
       },
     });
-
+    const result = await response.json();
+    console.log(result);
     const fileName = `${_.uniqueId('txtFile_')}.txt`;
     const filePath = buildFullPath(`screenshots/${fileName}`);
-    fs.writeFile(filePath, response, (e) => {
+    /* fs.writeFile(filePath, result, (e) => {
       if (e) {
         console.log('Something wrong!');
       } else {
         console.log('File .txt written successfully!');
       }
-    });
+    }); */
   });
 };
 

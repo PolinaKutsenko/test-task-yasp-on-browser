@@ -13,6 +13,9 @@
   },
   "author": "",
   "license": "ISC",
+  "browser": {
+    "[module-name]": false   
+  },
   "devDependencies": {
     "@webpack-cli/generators": "^3.0.0",
     "eslint": "^8.29.0",
@@ -25,7 +28,7 @@
   },
   "dependencies": {
     "chromedriver": "^108.0.0",
-    "fs-extra": "^11.1.0",
+    "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "path-browserify": "^1.0.1",
